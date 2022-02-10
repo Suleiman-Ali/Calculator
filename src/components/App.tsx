@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import { useState } from 'react';
 import Buttons from './Buttons';
 import TextArea from './TextArea';
@@ -16,16 +17,12 @@ function App(): JSX.Element {
     <div className="app">
       <TextArea text={text} result={result} />
 
-      <Buttons
-        className="operators"
-        list={OPERATORS}
-        renderElements={renderElements}
-      />
+      <Buttons className="operators" list={renderElements(OPERATORS)} />
+
       <Buttons
         className="numbers"
-        list={NUMBERS}
+        list={renderElements(NUMBERS)}
         isDel={true}
-        renderElements={renderElements}
       />
     </div>
   );
