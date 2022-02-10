@@ -4,7 +4,7 @@ import Buttons from './Buttons';
 import TextArea from './TextArea';
 
 const OPERATORS = ['*', '/', '-', '+', '='];
-const NUMBERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+const NUMBERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', 'DEL'];
 
 function App(): JSX.Element {
   const [text, setText] = useState<string>('');
@@ -15,15 +15,9 @@ function App(): JSX.Element {
 
   return (
     <div className="app">
-      <TextArea text={text} result={result} />
-
+      <TextArea className="text-area" text={text} result={result} />
       <Buttons className="operators" list={renderElements(OPERATORS)} />
-
-      <Buttons
-        className="numbers"
-        list={renderElements(NUMBERS)}
-        isDel={true}
-      />
+      <Buttons className="numbers" list={renderElements(NUMBERS)} />
     </div>
   );
 }
