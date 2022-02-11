@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
 import { useState } from 'react';
 import Buttons from './Buttons';
 import TextArea from './TextArea';
+import styles from '../styles/app.module.scss';
 
-const OPERATORS = ['*', '/', '-', '+', '='];
+const OPERATORS = ['*', '/', '-', '+', '=', 'C'];
 const NUMBERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', 'DEL'];
 
 function App(): JSX.Element {
@@ -14,10 +14,19 @@ function App(): JSX.Element {
     arr.map((el) => <button key={el}>{el}</button>);
 
   return (
-    <div className="app">
-      <TextArea className="text-area" text={text} result={result} />
-      <Buttons className="operators" list={renderElements(OPERATORS)} />
-      <Buttons className="numbers" list={renderElements(NUMBERS)} />
+    <div className={styles.app}>
+      <div className={styles.calculator}>
+        <TextArea className={styles.textarea} text={text} result={result} />
+        <Buttons
+          className={styles.operators}
+          list={renderElements(OPERATORS)}
+        />
+        <Buttons className={styles.numbers} list={renderElements(NUMBERS)} />
+      </div>
+
+      <p className={styles.note}>
+        Designed and Coded by <span>&lt;Suleiman Ali /&gt;</span>
+      </p>
     </div>
   );
 }
