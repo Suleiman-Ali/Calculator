@@ -7,8 +7,8 @@ interface TextAreaProps {
 function TextArea({ txt, res, className }: TextAreaProps): JSX.Element {
   return (
     <div className={className}>
-      <span>{res}</span>
-      <p>{txt}</p>
+      <span title={res}>{res}</span>
+      <p title={txt}>{txt}</p>
     </div>
   );
 }

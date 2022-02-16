@@ -24,6 +24,11 @@ $media-value-1: 500px;
   color: var(--text-color-1-active);
 }
 
+@mixin text-overlow-handler {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 html {
   font-size: 62.5%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -71,10 +76,13 @@ button {
 }
 
 .calculator {
-  width: 100%;
   max-width: 55rem;
+  width: 100%;
   background-color: var(--color-1);
   border-radius: 0.5rem;
+  box-shadow: 0px 0px 21px -8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 21px -8px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 21px -8px rgba(0, 0, 0, 0.5);
 
   .textarea {
     font-size: 2.5rem;
@@ -83,13 +91,17 @@ button {
     display: flex;
     align-items: center;
     gap: 1rem;
+    text-align: end;
 
     span {
       font-size: var(--font-size-1);
       color: #f5f2e7;
-      align-self: flex-end;
-      flex: 1;
-      text-align: end;
+      flex-grow: 1;
+      @include text-overlow-handler();
+    }
+
+    p {
+      @include text-overlow-handler();
     }
   }
 
