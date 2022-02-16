@@ -27,6 +27,7 @@ $media-value-1: 500px;
 @mixin text-overlow-handler {
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 html {
@@ -131,6 +132,10 @@ button {
           @include button-active();
         }
       }
+    }
+
+    &__btn-danger {
+      background-color: #dc3545 !important;
     }
   }
 

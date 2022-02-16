@@ -21,6 +21,7 @@ const NUMBERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', 'DEL'];
 function App(): JSX.Element {
   const [txt, setTxt] = useState<string>('');
   const [res, setRes] = useState<string>('');
+  const [isErr, setIsErr] = useState<boolean>(false);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const userInputHandler = (userInput: string) => {
@@ -64,19 +65,31 @@ function App(): JSX.Element {
     }
   };
 
-  const renderElements = (arr: string[]): JSX.Element[] =>
-    arr.map((el) => (
-      <button key={el} onClick={() => userInputHandler(el)}>
+  const renderElements = (arr: string[]): JSX.Element[] => {
+    let cls = '';
+    if (listIncludes(arr, '*') && isErr) cls = styles['operators__btn-danger'];
+
+    return arr.map((el) => (
+      <button className={cls} key={el} onClick={() => userInputHandler(el)}>
         {el}
       </button>
     ));
+  };
 
   useEffect(() => {
     try {
       evaluate(txt);
-      if (isOneNumber(txt)) return setRes('');
+
+      if (isOneNumber(txt)) {
+        setIsErr(false);
+        setRes('');
+        return;
+      }
+
       setRes(evaluate(txt));
+      setIsErr(false);
     } catch (err) {
+      setIsErr(true);
       setRes('');
     }
   }, [txt]);
@@ -105,7 +118,7 @@ export default App;
 // DONE ADD BUTTONS FUNCTIONALITY
 // DONE ADD KEYBOARD FUNCTIONALITY
 // DONE Fix overflow
-// TODO SHOW ERRORS
+// DONE SHOW ERRORS
 // TODO TEST THE APP & SOLVE BUGS IF ANY
 // TODO REFACTOR
 // TODO Chcek Code Quality
