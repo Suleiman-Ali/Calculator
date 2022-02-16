@@ -22,17 +22,18 @@ function App(): JSX.Element {
   const [txt, setTxt] = useState<string>('');
   const [res, setRes] = useState<string>('');
 
-  useEffect(() => {
-    try {
-      evaluate(txt);
-      if (isOneNumber(txt)) return setRes('');
-      setRes(evaluate(txt));
-    } catch (err) {
-      setRes('');
-    }
-  }, [txt]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const userInputHandler = (userInput: string) => {
+    let input = userInput;
 
-  const userInputHandler = (input: string) => {
+    if (bothEqual(input, 'Enter')) input = '=';
+    if (bothEqual(input, 'c')) input = 'C';
+    if (bothEqual(input, 'Backspace')) input = 'DEL';
+    if (bothEqual(input, 'Delete')) input = 'DEL';
+
+    if (!listIncludes(OPERATORS, input) && !listIncludes(NUMBERS, input))
+      return;
+
     if (isEmpty(txt) && listIncludes(OPERATORS, input)) return;
     if (isEmpty(txt) && bothEqual(input, 'C')) return;
     if (isEmpty(txt) && bothEqual(input, 'DEL')) return;
@@ -40,6 +41,7 @@ function App(): JSX.Element {
     if (isEmpty(txt) && bothEqual(input, '0')) return;
     if (bothEqual(input, 'C')) return clearAll(setTxt, setRes);
     if (bothEqual(input, 'DEL')) return setTxt((txt) => rmLastCharOf(txt));
+
     if (listIncludes(NUMBERS, input))
       return setTxt((txt) => concat(txt, input));
 
@@ -52,7 +54,6 @@ function App(): JSX.Element {
           evaluate(txt);
           setTxt(`${evaluate(txt)}`);
         } catch (err) {}
-
         return;
       }
 
@@ -70,6 +71,22 @@ function App(): JSX.Element {
       </button>
     ));
 
+  useEffect(() => {
+    try {
+      evaluate(txt);
+      if (isOneNumber(txt)) return setRes('');
+      setRes(evaluate(txt));
+    } catch (err) {
+      setRes('');
+    }
+  }, [txt]);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => userInputHandler(e.key);
+    document.addEventListener<'keydown'>('keydown', handler);
+    return () => document.removeEventListener<'keydown'>('keydown', handler);
+  }, [userInputHandler]);
+
   return (
     <div className={styles.app}>
       <div className={styles.calculator}>
@@ -86,6 +103,9 @@ function App(): JSX.Element {
 export default App;
 
 // DONE ADD BUTTONS FUNCTIONALITY
-// TODO ADD KEYBOARD FUNCTIONALITY
+// DONE ADD KEYBOARD FUNCTIONALITY
 // TODO SHOW ERRORS
 // TODO Fix overflow
+// TODO TEST THE APP & SOLVE BUGS IF ANY
+// TODO REFACTOR
+// TODO Chcek Code Quality
