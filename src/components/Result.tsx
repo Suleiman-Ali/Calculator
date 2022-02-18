@@ -1,10 +1,10 @@
-interface TextAreaProps {
+interface ResultProps {
   txt: string;
   res: string;
   className: string;
 }
 
-function TextArea({ txt, res, className }: TextAreaProps): JSX.Element {
+function Result({ txt, res, className }: ResultProps): JSX.Element {
   return (
     <div className={className}>
       <span title={res}>{res}</span>
@@ -13,4 +13,4 @@ function TextArea({ txt, res, className }: TextAreaProps): JSX.Element {
   );
 }
 
-export default TextArea;
+export default Result;

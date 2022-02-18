@@ -1,0 +1,87 @@
+.calculator {
+  max-width: 55rem;
+  width: 100%;
+  background-color: var(--color-1);
+  border-radius: 0.5rem;
+  @include apply-box-shadow();
+
+  .textarea {
+    font-size: calc(var(--font-size-1) + 0.5rem);
+    color: var(--text-color-1);
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: end;
+
+    span {
+      font-size: var(--font-size-1);
+      color: #f5f2e7;
+      flex-grow: 1;
+      @include text-overlow-handler();
+    }
+
+    p {
+      @include text-overlow-handler();
+    }
+  }
+
+  .operators {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: var(--font-size-1);
+
+    @media screen and (min-width: $media-value-1) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    button {
+      font-size: inherit;
+      padding: var(--padding-1);
+      background-color: var(--color-2);
+      color: var(--text-color-1);
+      transition: var(--transition-1);
+
+      @media screen and (min-width: $media-value-1) {
+        &:hover {
+          background-color: var(--color-2-hover);
+          @include button-hover();
+        }
+
+        &:active {
+          @include button-active();
+        }
+      }
+    }
+
+    &__btn--danger {
+      background-color: var(--color-danger) !important;
+    }
+  }
+
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: var(--font-size-1);
+    color: var(--text-color-1);
+
+    button {
+      color: inherit;
+      font-size: inherit;
+      padding: var(--padding-1);
+      background-color: transparent;
+      transition: var(--transition-1);
+
+      @media screen and (min-width: $media-value-1) {
+        &:hover {
+          background-color: var(--color-1-hover);
+          @include button-hover();
+        }
+
+        &:active {
+          @include button-active();
+        }
+      }
+    }
+  }
+}

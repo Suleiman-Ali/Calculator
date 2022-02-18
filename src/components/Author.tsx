@@ -1,9 +1,9 @@
-interface FooterTextProps {
+interface AuthorProps {
   name: string;
   className: string;
 }
 
-function FooterText({ name, className }: FooterTextProps): JSX.Element {
+function Author({ name, className }: AuthorProps): JSX.Element {
   return (
     <p className={className}>
       Designed and Coded by <span>&lt;{name} /&gt;</span>
@@ -11,4 +11,4 @@ function FooterText({ name, className }: FooterTextProps): JSX.Element {
   );
 }
 
-export default FooterText;
+export default Author;
