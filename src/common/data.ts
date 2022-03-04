@@ -1,7 +1,6 @@
 export const ENTER = 'Enter';
 export const BACKSPACE = 'Backspace';
 export const DELETE = 'Delete';
-export const SMALL_CLEAR = 'c';
 
 export const MULT = '*';
 export const DIV = '/';

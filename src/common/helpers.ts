@@ -2,10 +2,8 @@ import {
   NUMBERS,
   OPERATORS,
   ENTER,
-  SMALL_CLEAR,
   BACKSPACE,
   EQUAL,
-  CAP_CLEAR,
   DELETE,
   DEL,
 } from './data';
@@ -32,9 +30,8 @@ export const concat = (str1: string, str2: string): string => `${str1}${str2}`;
 
 export const oneNumber = (str: string): boolean => !isNaN(+str);
 
-export const correctUserInput = (input: string) => {
+export const correctUserInput = (input: string): string => {
   if (equal(input, ENTER)) return EQUAL;
-  if (equal(input, SMALL_CLEAR)) return CAP_CLEAR;
   if (equal(input, BACKSPACE) || equal(input, DELETE)) return DEL;
   return input;
 };
