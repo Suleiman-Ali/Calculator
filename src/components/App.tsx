@@ -88,7 +88,10 @@ function App(): JSX.Element {
   }, [txt]);
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => userInputHandler(e.key);
+    const handler = (e: KeyboardEvent) => {
+      e.preventDefault();
+      userInputHandler(e.key);
+    };
     document.addEventListener<'keydown'>('keydown', handler);
     return () => document.removeEventListener<'keydown'>('keydown', handler);
   }, [userInputHandler]);
