@@ -1,6 +1,6 @@
 # Calculator 🧮  
 
-Calculator is a simple equation solver, it includes operations such as additiona, subtraction, multiplication, and division.
+Calculator is a simple equation solver, it includes operations such as addition, subtraction, multiplication, and division.
 
 ### Built Using
 - HTML with JSX
