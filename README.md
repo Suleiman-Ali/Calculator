@@ -5,8 +5,8 @@ Calculator is a simple equation solver, it includes operations such as addition,
 ![Alt text](./site-image.png)
 
 ### Built Using
-- HTML with JSX
-- CSS with SCSS
-- JavaScript with Typescript 
+- HTML
+- SASS
+- Typescript 
 - ReactJs
 - MathJs
