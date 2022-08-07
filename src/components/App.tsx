@@ -48,8 +48,8 @@ function App(): JSX.Element {
 
       if (equal(input, EQUAL)) {
         try {
-          eval(txt);
-          setTxt(`${eval(txt)}`);
+          MA.eval(txt);
+          setTxt(`${MA.eval(txt)}`);
         } catch (err) {}
         return;
       }
@@ -79,9 +79,10 @@ function App(): JSX.Element {
     };
 
     try {
-      eval(txt);
+      if (!txt) return;
+      MA.eval(txt);
       if (oneNumber(txt)) return setResAndIsErr('', false);
-      setResAndIsErr(eval(txt), false);
+      setResAndIsErr(MA.eval(txt), false);
     } catch (err) {
       setResAndIsErr('', true);
     }
