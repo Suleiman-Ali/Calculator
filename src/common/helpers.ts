@@ -1,3 +1,4 @@
+import { SetStateAction } from 'react';
 import {
   NUMBERS,
   OPERATORS,
@@ -8,7 +9,7 @@ import {
   DEL,
 } from './data';
 
-type setFunction = (value: React.SetStateAction<string>) => void;
+type setFunction = (value: SetStateAction<string>) => void;
 
 export const clearAll = (...setters: setFunction[]) =>
   setters.map((setter) => setter(''));

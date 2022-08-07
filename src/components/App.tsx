@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { evaluate } from 'mathjs';
+import MA from 'math-expression-evaluator';
 import { OPERATORS, NUMBERS, EQUAL, CAP_CLEAR, DEL, DOT } from '../common/data';
 import {
   equal,
@@ -48,8 +48,8 @@ function App(): JSX.Element {
 
       if (equal(input, EQUAL)) {
         try {
-          evaluate(txt);
-          setTxt(`${evaluate(txt)}`);
+          eval(txt);
+          setTxt(`${eval(txt)}`);
         } catch (err) {}
         return;
       }
@@ -79,9 +79,9 @@ function App(): JSX.Element {
     };
 
     try {
-      evaluate(txt);
+      eval(txt);
       if (oneNumber(txt)) return setResAndIsErr('', false);
-      setResAndIsErr(evaluate(txt), false);
+      setResAndIsErr(eval(txt), false);
     } catch (err) {
       setResAndIsErr('', true);
     }
