@@ -4,7 +4,7 @@ Calculator is a simple equation solver, it includes operations such as addition,
 
 ![Alt text](./site-image.png)
 
-### Built Using
+### Technologies
 - HTML
 - SASS
 - Typescript 
