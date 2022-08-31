@@ -16,7 +16,6 @@ import {
 import Calculator from './Calculator';
 import Result from './Result';
 import List from './List';
-import Author from './Author';
 import styles from '../styles/app.module.scss';
 
 function App(): JSX.Element {
@@ -104,7 +103,6 @@ function App(): JSX.Element {
         <List className={styles.operators} list={renderElements(OPERATORS)} />
         <List className={styles.numbers} list={renderElements(NUMBERS)} />
       </Calculator>
-      <Author className={styles.author} name={'Suleiman Ali'} />
     </div>
   );
 }
